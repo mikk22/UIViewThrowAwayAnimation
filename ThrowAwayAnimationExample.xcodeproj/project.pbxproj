@@ -17,7 +17,7 @@
 		CE9B15261754CF2E006BF165 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15251754CF2E006BF165 /* Default@2x.png */; };
 		CE9B15281754CF2E006BF165 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15271754CF2E006BF165 /* Default-568h@2x.png */; };
 		CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B152A1754CF2E006BF165 /* RPLViewController.m */; };
-		CE9B152E1754CF2E006BF165 /* RPLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B152C1754CF2E006BF165 /* RPLViewController.xib */; };
+		CE9B153B1754D201006BF165 /* UIView+throwAwayAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B153A1754D201006BF165 /* UIView+throwAwayAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,8 @@
 		CE9B15271754CF2E006BF165 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE9B15291754CF2E006BF165 /* RPLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLViewController.h; sourceTree = "<group>"; };
 		CE9B152A1754CF2E006BF165 /* RPLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPLViewController.m; sourceTree = "<group>"; };
-		CE9B152D1754CF2E006BF165 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RPLViewController.xib; sourceTree = "<group>"; };
+		CE9B15391754D201006BF165 /* UIView+throwAwayAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+throwAwayAnimation.h"; sourceTree = "<group>"; };
+		CE9B153A1754D201006BF165 /* UIView+throwAwayAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+throwAwayAnimation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +84,11 @@
 		CE9B15171754CF2E006BF165 /* ThrowAwayAnimationExample */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B15381754D201006BF165 /* UIViewThrowAwayAnimation */,
 				CE9B15201754CF2E006BF165 /* RPLAppDelegate.h */,
 				CE9B15211754CF2E006BF165 /* RPLAppDelegate.m */,
 				CE9B15291754CF2E006BF165 /* RPLViewController.h */,
 				CE9B152A1754CF2E006BF165 /* RPLViewController.m */,
-				CE9B152C1754CF2E006BF165 /* RPLViewController.xib */,
 				CE9B15181754CF2E006BF165 /* Supporting Files */,
 			);
 			path = ThrowAwayAnimationExample;
@@ -106,6 +107,15 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		CE9B15381754D201006BF165 /* UIViewThrowAwayAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B15391754D201006BF165 /* UIView+throwAwayAnimation.h */,
+				CE9B153A1754D201006BF165 /* UIView+throwAwayAnimation.m */,
+			);
+			path = UIViewThrowAwayAnimation;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -163,7 +173,6 @@
 				CE9B15241754CF2E006BF165 /* Default.png in Resources */,
 				CE9B15261754CF2E006BF165 /* Default@2x.png in Resources */,
 				CE9B15281754CF2E006BF165 /* Default-568h@2x.png in Resources */,
-				CE9B152E1754CF2E006BF165 /* RPLViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +186,7 @@
 				CE9B151E1754CF2E006BF165 /* main.m in Sources */,
 				CE9B15221754CF2E006BF165 /* RPLAppDelegate.m in Sources */,
 				CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */,
+				CE9B153B1754D201006BF165 /* UIView+throwAwayAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,14 +199,6 @@
 				CE9B151B1754CF2E006BF165 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CE9B152C1754CF2E006BF165 /* RPLViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE9B152D1754CF2E006BF165 /* en */,
-			);
-			name = RPLViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -299,6 +301,7 @@
 				CE9B15331754CF2E006BF165 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

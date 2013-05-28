@@ -7,8 +7,13 @@
 //
 
 #import "RPLViewController.h"
+#import "UIView+throwAwayAnimation.h"
 
 @interface RPLViewController ()
+
+@property (nonatomic, strong)   UIView      *animatedView;
+
+-(void)_setupAnimatedView;
 
 @end
 
@@ -17,13 +22,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor=[UIColor whiteColor];
+    [self _setupAnimatedView];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewWillAppear:animated];
+    self.animatedView.frame=CGRectMake(50.f, 50.f, CGRectGetWidth(self.view.bounds)-100.f, CGRectGetWidth(self.view.bounds)-100.f);
+    self.animatedView.center=self.view.center;
 }
+
+
+-(void)_setupAnimatedView
+{
+    self.animatedView=[[UIView alloc] initWithFrame:CGRectZero];
+    self.animatedView.backgroundColor=[UIColor lightGrayColor];
+    __weak typeof (self) weakSelf=self;
+    [self.animatedView addThrowAwayAnimationWithCompletionHandler:^
+    {
+        weakSelf.animatedView.transform=CGAffineTransformIdentity;
+        weakSelf.animatedView.center=weakSelf.view.center;
+    }];
+    
+    [self.view addSubview:self.animatedView];
+}
+
 
 @end

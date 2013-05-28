@@ -9,6 +9,8 @@
 #import "UIView+throwAwayAnimation.h"
 #import <objc/runtime.h>
 
+#define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
+
 NSString * const kStartPointKey =       @"kStartPointKey";
 NSString * const kEndPointKey =         @"kEndPointKey";
 NSString * const kPanRecognizerKey =    @"kPanRecognizerKey";
