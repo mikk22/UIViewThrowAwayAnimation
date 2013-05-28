@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE9B15121754CF2E006BF165 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15111754CF2E006BF165 /* UIKit.framework */; };
+		CE9B15141754CF2E006BF165 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15131754CF2E006BF165 /* Foundation.framework */; };
+		CE9B15161754CF2E006BF165 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15151754CF2E006BF165 /* CoreGraphics.framework */; };
+		CE9B151C1754CF2E006BF165 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE9B151A1754CF2E006BF165 /* InfoPlist.strings */; };
+		CE9B151E1754CF2E006BF165 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B151D1754CF2E006BF165 /* main.m */; };
+		CE9B15221754CF2E006BF165 /* RPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B15211754CF2E006BF165 /* RPLAppDelegate.m */; };
+		CE9B15241754CF2E006BF165 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15231754CF2E006BF165 /* Default.png */; };
+		CE9B15261754CF2E006BF165 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15251754CF2E006BF165 /* Default@2x.png */; };
+		CE9B15281754CF2E006BF165 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15271754CF2E006BF165 /* Default-568h@2x.png */; };
+		CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B152A1754CF2E006BF165 /* RPLViewController.m */; };
+		CE9B152E1754CF2E006BF165 /* RPLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B152C1754CF2E006BF165 /* RPLViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE9B150E1754CF2E006BF165 /* ThrowAwayAnimationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThrowAwayAnimationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9B15111754CF2E006BF165 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CE9B15131754CF2E006BF165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE9B15151754CF2E006BF165 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CE9B15191754CF2E006BF165 /* ThrowAwayAnimationExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThrowAwayAnimationExample-Info.plist"; sourceTree = "<group>"; };
+		CE9B151B1754CF2E006BF165 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE9B151D1754CF2E006BF165 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE9B151F1754CF2E006BF165 /* ThrowAwayAnimationExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ThrowAwayAnimationExample-Prefix.pch"; sourceTree = "<group>"; };
+		CE9B15201754CF2E006BF165 /* RPLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLAppDelegate.h; sourceTree = "<group>"; };
+		CE9B15211754CF2E006BF165 /* RPLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPLAppDelegate.m; sourceTree = "<group>"; };
+		CE9B15231754CF2E006BF165 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CE9B15251754CF2E006BF165 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CE9B15271754CF2E006BF165 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CE9B15291754CF2E006BF165 /* RPLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLViewController.h; sourceTree = "<group>"; };
+		CE9B152A1754CF2E006BF165 /* RPLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPLViewController.m; sourceTree = "<group>"; };
+		CE9B152D1754CF2E006BF165 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RPLViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE9B150B1754CF2E006BF165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9B15121754CF2E006BF165 /* UIKit.framework in Frameworks */,
+				CE9B15141754CF2E006BF165 /* Foundation.framework in Frameworks */,
+				CE9B15161754CF2E006BF165 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE9B15051754CF2E006BF165 = {
+			isa = PBXGroup;
+			children = (
+				CE9B15171754CF2E006BF165 /* ThrowAwayAnimationExample */,
+				CE9B15101754CF2E006BF165 /* Frameworks */,
+				CE9B150F1754CF2E006BF165 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE9B150F1754CF2E006BF165 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B150E1754CF2E006BF165 /* ThrowAwayAnimationExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE9B15101754CF2E006BF165 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B15111754CF2E006BF165 /* UIKit.framework */,
+				CE9B15131754CF2E006BF165 /* Foundation.framework */,
+				CE9B15151754CF2E006BF165 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE9B15171754CF2E006BF165 /* ThrowAwayAnimationExample */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B15201754CF2E006BF165 /* RPLAppDelegate.h */,
+				CE9B15211754CF2E006BF165 /* RPLAppDelegate.m */,
+				CE9B15291754CF2E006BF165 /* RPLViewController.h */,
+				CE9B152A1754CF2E006BF165 /* RPLViewController.m */,
+				CE9B152C1754CF2E006BF165 /* RPLViewController.xib */,
+				CE9B15181754CF2E006BF165 /* Supporting Files */,
+			);
+			path = ThrowAwayAnimationExample;
+			sourceTree = "<group>";
+		};
+		CE9B15181754CF2E006BF165 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B15191754CF2E006BF165 /* ThrowAwayAnimationExample-Info.plist */,
+				CE9B151A1754CF2E006BF165 /* InfoPlist.strings */,
+				CE9B151D1754CF2E006BF165 /* main.m */,
+				CE9B151F1754CF2E006BF165 /* ThrowAwayAnimationExample-Prefix.pch */,
+				CE9B15231754CF2E006BF165 /* Default.png */,
+				CE9B15251754CF2E006BF165 /* Default@2x.png */,
+				CE9B15271754CF2E006BF165 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE9B150D1754CF2E006BF165 /* ThrowAwayAnimationExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9B15311754CF2E006BF165 /* Build configuration list for PBXNativeTarget "ThrowAwayAnimationExample" */;
+			buildPhases = (
+				CE9B150A1754CF2E006BF165 /* Sources */,
+				CE9B150B1754CF2E006BF165 /* Frameworks */,
+				CE9B150C1754CF2E006BF165 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThrowAwayAnimationExample;
+			productName = ThrowAwayAnimationExample;
+			productReference = CE9B150E1754CF2E006BF165 /* ThrowAwayAnimationExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE9B15061754CF2E006BF165 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RPL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = RedPandazLabs;
+			};
+			buildConfigurationList = CE9B15091754CF2E006BF165 /* Build configuration list for PBXProject "ThrowAwayAnimationExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE9B15051754CF2E006BF165;
+			productRefGroup = CE9B150F1754CF2E006BF165 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE9B150D1754CF2E006BF165 /* ThrowAwayAnimationExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE9B150C1754CF2E006BF165 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9B151C1754CF2E006BF165 /* InfoPlist.strings in Resources */,
+				CE9B15241754CF2E006BF165 /* Default.png in Resources */,
+				CE9B15261754CF2E006BF165 /* Default@2x.png in Resources */,
+				CE9B15281754CF2E006BF165 /* Default-568h@2x.png in Resources */,
+				CE9B152E1754CF2E006BF165 /* RPLViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE9B150A1754CF2E006BF165 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9B151E1754CF2E006BF165 /* main.m in Sources */,
+				CE9B15221754CF2E006BF165 /* RPLAppDelegate.m in Sources */,
+				CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE9B151A1754CF2E006BF165 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE9B151B1754CF2E006BF165 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE9B152C1754CF2E006BF165 /* RPLViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE9B152D1754CF2E006BF165 /* en */,
+			);
+			name = RPLViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE9B152F1754CF2E006BF165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE9B15301754CF2E006BF165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE9B15321754CF2E006BF165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
+				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CE9B15331754CF2E006BF165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
+				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE9B15091754CF2E006BF165 /* Build configuration list for PBXProject "ThrowAwayAnimationExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9B152F1754CF2E006BF165 /* Debug */,
+				CE9B15301754CF2E006BF165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE9B15311754CF2E006BF165 /* Build configuration list for PBXNativeTarget "ThrowAwayAnimationExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9B15321754CF2E006BF165 /* Debug */,
+				CE9B15331754CF2E006BF165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE9B15061754CF2E006BF165 /* Project object */;
+}
