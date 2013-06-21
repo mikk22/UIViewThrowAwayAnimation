@@ -15,15 +15,14 @@ NSString * const kStartPointKey =       @"kStartPointKey";
 NSString * const kEndPointKey =         @"kEndPointKey";
 NSString * const kPanRecognizerKey =    @"kPanRecognizerKey";
 
+static char UIViewThrowAwayActionBlockAction;
 static char UIViewThrowAwayCompletionBlockAction;
-typedef void(^UIViewThrowAwayCompletionBlock)(void);
-
 
 @interface UIView(Private)
 
 @property (nonatomic)   CGPoint                             throwAwayStartPoint;
 @property (nonatomic)   CGPoint                             throwAwayEndPoint;
-@property (nonatomic)   UIViewThrowAwayCompletionBlock      throwAwayCompletionBlock;
+@property (nonatomic)   UIViewThrowAwayActionBlock          throwAwayCompletionBlock;
 @property (nonatomic)   UIPanGestureRecognizer              *throwAwayPanGestureRecognizer;
 
 @end
@@ -65,7 +64,7 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
 
 
 
--(void)setThrowAwayCompletionBlock:(UIViewThrowAwayCompletionBlock)throwAwayCompletionBlock
+-(void)setThrowAwayCompletionBlock:(UIViewThrowAwayActionBlock)throwAwayCompletionBlock
 {
     objc_setAssociatedObject(self,
                              &UIViewThrowAwayCompletionBlockAction,
@@ -73,10 +72,27 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
                              OBJC_ASSOCIATION_COPY);
 }
 
--(UIViewThrowAwayCompletionBlock)throwAwayCompletionBlock
+-(UIViewThrowAwayActionBlock)throwAwayCompletionBlock
 {
     return objc_getAssociatedObject(self,
                                     &UIViewThrowAwayCompletionBlockAction);
+}
+
+
+
+
+-(void)setThrowAwayActionBlock:(UIViewThrowAwayActionBlock)throwAwayCompletionBlock
+{
+    objc_setAssociatedObject(self,
+                             &UIViewThrowAwayActionBlockAction,
+                             [throwAwayCompletionBlock copy],
+                             OBJC_ASSOCIATION_COPY);
+}
+
+-(UIViewThrowAwayActionBlock)throwAwayActionBlock
+{
+    return objc_getAssociatedObject(self,
+                                    &UIViewThrowAwayActionBlockAction);
 }
 
 
@@ -104,7 +120,7 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
 
 
 
--(void)addThrowAwayAnimationWithCompletionHandler:(UIViewThrowAwayCompletionBlock)actionBlock
+-(void)addThrowAwayAnimationWithCompletionHandler:(UIViewThrowAwayActionBlock)actionBlock
 {
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handleThrowAwayPanRecognizer:)];
     [panGestureRecognizer setMaximumNumberOfTouches:2];
@@ -115,8 +131,15 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
 
 
 
+-(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection
+{
+    [self startThrowAwayAnimationWithDirection:animationDirection completionHandler:self.throwAwayCompletionBlock];
+}
 
--(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection completionHandler:(void(^)(void))actionBlock
+
+
+
+-(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection completionHandler:(UIViewThrowAwayActionBlock)actionBlock
 {
     self.throwAwayStartPoint=self.center;
     self.throwAwayCompletionBlock=actionBlock ? actionBlock : nil;
@@ -215,6 +238,9 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
     CGFloat angle=(  destPoint.x/(CGRectGetWidth(self.superview.bounds)/2)) * M_PI/20;
     CGAffineTransform transform = CGAffineTransformMakeRotation(angle);
     
+    if (self.throwAwayActionBlock)
+        self.throwAwayActionBlock(destPoint.x<=0 ? kThrowAwayAnimationDirectionLeft : kThrowAwayAnimationDirectionRight);
+
     __weak typeof (self) weakSelf=self;
     [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         weakSelf.center=destPoint;
@@ -223,7 +249,7 @@ typedef void(^UIViewThrowAwayCompletionBlock)(void);
     } completion:^(BOOL finished)
      {
          if (weakSelf.throwAwayCompletionBlock)
-             weakSelf.throwAwayCompletionBlock();
+             weakSelf.throwAwayCompletionBlock(destPoint.x<=0 ? kThrowAwayAnimationDirectionLeft : kThrowAwayAnimationDirectionRight);
      }];
 }
 

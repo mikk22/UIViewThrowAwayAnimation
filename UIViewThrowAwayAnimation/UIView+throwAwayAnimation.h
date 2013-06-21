@@ -12,13 +12,17 @@ typedef enum {
     kThrowAwayAnimationDirectionLeft
 } kThrowAwayAnimationDirection;
 
+typedef void(^UIViewThrowAwayActionBlock)(kThrowAwayAnimationDirection direction);
 
 #import <UIKit/UIKit.h>
 
 @interface UIView (throwAwayAnimation)
 
--(void)addThrowAwayAnimationWithCompletionHandler:(void(^)(void))actionBlock;
--(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection completionHandler:(void(^)(void))actionBlock;
+@property (nonatomic)   UIViewThrowAwayActionBlock          throwAwayActionBlock;
+
+-(void)addThrowAwayAnimationWithCompletionHandler:(UIViewThrowAwayActionBlock)actionBlock;
+-(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection;
+-(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection completionHandler:(UIViewThrowAwayActionBlock)actionBlock;
 -(void)removeThrowAwayAnimation;
 
 @end
