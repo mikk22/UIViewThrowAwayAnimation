@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
+#define DEFAULT_RETURN_ANGLE        5.f
 
 NSString * const kStartPointKey =       @"kStartPointKey";
 NSString * const kEndPointKey =         @"kEndPointKey";
@@ -17,13 +18,18 @@ NSString * const kPanRecognizerKey =    @"kPanRecognizerKey";
 
 static char UIViewThrowAwayActionBlockAction;
 static char UIViewThrowAwayCompletionBlockAction;
+static char UIViewThrowAwayReturnedToPlaceBlockAction;
+static char UIViewThrowAwayStartActionBlockAction;
 
 @interface UIView(Private)
 
 @property (nonatomic)   CGPoint                             throwAwayStartPoint;
 @property (nonatomic)   CGPoint                             throwAwayEndPoint;
-@property (nonatomic)   UIViewThrowAwayActionBlock          throwAwayCompletionBlock;
 @property (nonatomic)   UIPanGestureRecognizer              *throwAwayPanGestureRecognizer;
+//
+// completionBlock is performed after animation ends and animated View is out of superview
+//
+@property (nonatomic)   UIViewThrowAwayActionBlock          throwAwayCompletionBlock;
 
 @end
 
@@ -32,7 +38,6 @@ static char UIViewThrowAwayCompletionBlockAction;
 
 
 #pragma mark - Internal Properties -
-
 
 - (void)setThrowAwayStartPoint:(CGPoint)throwAwayStartPoint
 {
@@ -97,6 +102,41 @@ static char UIViewThrowAwayCompletionBlockAction;
 
 
 
+
+-(void)setThrowAwayReturnedToPlaceBlock:(UIViewThrowAwayBlock)throwAwayReturnedToPlaceBlock
+{
+    objc_setAssociatedObject(self,
+                             &UIViewThrowAwayReturnedToPlaceBlockAction,
+                             [throwAwayReturnedToPlaceBlock copy],
+                             OBJC_ASSOCIATION_COPY);
+}
+
+-(UIViewThrowAwayBlock)throwAwayReturnedToPlaceBlock
+{
+    return objc_getAssociatedObject(self,
+                                    &UIViewThrowAwayReturnedToPlaceBlockAction);
+}
+
+
+
+
+-(void)setThrowAwayStartActionBlock:(UIViewThrowAwayBlock)throwAwayStartActionBlock
+{
+    objc_setAssociatedObject(self,
+                             &UIViewThrowAwayStartActionBlockAction,
+                             [throwAwayStartActionBlock copy],
+                             OBJC_ASSOCIATION_COPY);
+}
+
+-(UIViewThrowAwayBlock)throwAwayStartActionBlock
+{
+    return objc_getAssociatedObject(self,
+                                    &UIViewThrowAwayStartActionBlockAction);
+}
+
+
+
+
 - (void)setThrowAwayPanGestureRecognizer:(UIPanGestureRecognizer *)throwAwayPanGestureRecognizer
 {
 	objc_setAssociatedObject(self, (__bridge const void *)(kPanRecognizerKey), throwAwayPanGestureRecognizer, OBJC_ASSOCIATION_COPY);
@@ -115,6 +155,10 @@ static char UIViewThrowAwayCompletionBlockAction;
 #pragma mark - Main Routines -
 
 
+-(void)addThrowAwayAnimation
+{
+    [self addThrowAwayAnimationWithCompletionHandler:nil];
+}
 
 
 
@@ -141,11 +185,14 @@ static char UIViewThrowAwayCompletionBlockAction;
 
 -(void)startThrowAwayAnimationWithDirection:(kThrowAwayAnimationDirection)animationDirection completionHandler:(UIViewThrowAwayActionBlock)actionBlock
 {
+    if (self.throwAwayStartActionBlock)
+        self.throwAwayStartActionBlock();
+
     self.throwAwayStartPoint=self.center;
     self.throwAwayCompletionBlock=actionBlock ? actionBlock : nil;
     
 #warning !!!IMPLEMENT IN FUTURE TO REAL VIEW BOUNDS SIZEs
-    CGPoint destPoint=animationDirection == kThrowAwayAnimationDirectionRight ? CGPointMake(640.f, 400.f) : CGPointMake(-320.f, 400.f);
+    CGPoint destPoint=animationDirection == kThrowAwayAnimationDirectionRight ? CGPointMake(640.f, CGRectGetWidth(self.superview.bounds)/2) : CGPointMake(-320.f, CGRectGetWidth(self.superview.bounds)/2);
     [self _makeAnimationToPoint:destPoint velocity:CGPointMake(500.f, 500.f)];
 }
 
@@ -177,6 +224,8 @@ static char UIViewThrowAwayCompletionBlockAction;
     if (gesture.state == UIGestureRecognizerStateBegan)
     {
         self.throwAwayStartPoint=gesture.view.center;
+        if (self.throwAwayStartActionBlock)
+            self.throwAwayStartActionBlock();
     };
     
     
@@ -217,7 +266,7 @@ static char UIViewThrowAwayCompletionBlockAction;
             [view performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:5.f];
             */
             
-            if (fabsf(RADIANS_TO_DEGREES(angle))<2)
+            if (fabsf(RADIANS_TO_DEGREES(angle))<DEFAULT_RETURN_ANGLE)
                   [self _centerAnimationWithVelocity:[gesture velocityInView:self.superview]];
             else
                 [self _makeAnimationToPoint:resultPoint velocity:[gesture velocityInView:self.superview]];
@@ -265,6 +314,8 @@ static char UIViewThrowAwayCompletionBlockAction;
         self.center=self.throwAwayStartPoint;
     } completion:^(BOOL finished)
      {
+         if (self.throwAwayReturnedToPlaceBlock)
+             self.throwAwayReturnedToPlaceBlock();
      }];
 }
 
