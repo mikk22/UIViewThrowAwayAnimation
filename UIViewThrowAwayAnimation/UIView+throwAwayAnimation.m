@@ -9,7 +9,6 @@
 #import "UIView+throwAwayAnimation.h"
 #import <objc/runtime.h>
 
-#define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
 #define DEFAULT_RETURN_ANGLE        5.f
 
 NSString * const kStartPointKey =       @"kStartPointKey";
@@ -20,6 +19,7 @@ static char UIViewThrowAwayActionBlockAction;
 static char UIViewThrowAwayCompletionBlockAction;
 static char UIViewThrowAwayReturnedToPlaceBlockAction;
 static char UIViewThrowAwayStartActionBlockAction;
+static char UIViewThrowAwayViewAngleDidChangeBlockAction;
 
 @interface UIView(Private)
 
@@ -137,6 +137,23 @@ static char UIViewThrowAwayStartActionBlockAction;
 
 
 
+-(void)setThrowAwayAngleDidChangeBlock:(UIViewThrowAwayViewAngleDidChangeBlock)throwAwayAngleDidChangeBlock
+{
+    objc_setAssociatedObject(self,
+                             &UIViewThrowAwayViewAngleDidChangeBlockAction,
+                             [throwAwayAngleDidChangeBlock copy],
+                             OBJC_ASSOCIATION_COPY);
+}
+
+-(UIViewThrowAwayViewAngleDidChangeBlock)throwAwayAngleDidChangeBlock
+{
+    return objc_getAssociatedObject(self,
+                                    &UIViewThrowAwayViewAngleDidChangeBlockAction);
+}
+
+
+
+
 - (void)setThrowAwayPanGestureRecognizer:(UIPanGestureRecognizer *)throwAwayPanGestureRecognizer
 {
 	objc_setAssociatedObject(self, (__bridge const void *)(kPanRecognizerKey), throwAwayPanGestureRecognizer, OBJC_ASSOCIATION_COPY);
@@ -146,7 +163,6 @@ static char UIViewThrowAwayStartActionBlockAction;
 {
     return objc_getAssociatedObject(self, (__bridge const void *)(kPanRecognizerKey));
 }
-
 
 
 
@@ -204,6 +220,10 @@ static char UIViewThrowAwayStartActionBlockAction;
 -(void)removeThrowAwayAnimation
 {
     self.throwAwayCompletionBlock=nil;
+    self.throwAwayActionBlock=nil;
+    self.throwAwayReturnedToPlaceBlock=nil;
+    self.throwAwayAngleDidChangeBlock=nil;
+    self.throwAwayStartActionBlock=nil;
     [self.throwAwayPanGestureRecognizer removeTarget:self action:@selector(_handleThrowAwayPanRecognizer:)];
 }
 
@@ -240,6 +260,9 @@ static char UIViewThrowAwayStartActionBlockAction;
                                          gesture.view.center.y + translation.y);
         
         [gesture setTranslation:CGPointZero inView:gesture.view.superview];
+        
+        if (self.throwAwayAngleDidChangeBlock)
+            self.throwAwayAngleDidChangeBlock(angle);
     } else
         if (gesture.state == UIGestureRecognizerStateEnded)
         {
@@ -294,7 +317,11 @@ static char UIViewThrowAwayStartActionBlockAction;
     [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         weakSelf.center=destPoint;
         weakSelf.transform=transform;
-        
+  
+#pragma mark !!! warning
+//        if (self.throwAwayAngleDidChangeBlock)
+//            self.throwAwayAngleDidChangeBlock(angle);
+
     } completion:^(BOOL finished)
      {
          if (weakSelf.throwAwayCompletionBlock)
@@ -312,6 +339,10 @@ static char UIViewThrowAwayStartActionBlockAction;
     [UIView animateWithDuration:duration delay:0.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.transform=CGAffineTransformIdentity;
         self.center=self.throwAwayStartPoint;
+        
+//        if (self.throwAwayAngleDidChangeBlock)
+//            self.throwAwayAngleDidChangeBlock(angle);
+        
     } completion:^(BOOL finished)
      {
          if (self.throwAwayReturnedToPlaceBlock)
