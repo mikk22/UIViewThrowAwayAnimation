@@ -7,11 +7,12 @@
 //
 
 #import "RPLViewController.h"
-#import "UIView+throwAwayAnimation.h"
 
-@interface RPLViewController ()
+#import "RPLThrowAwayAnimationView.h"
 
-@property (nonatomic, strong)   UIView      *animatedView;
+@interface RPLViewController()<RPLThrowAwayAnimationViewDelegate>
+
+@property (nonatomic, strong) RPLThrowAwayAnimationView* animatedView;
 
 -(void)_setupAnimatedView;
 
@@ -29,24 +30,31 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.animatedView.frame=CGRectMake(50.f, 50.f, CGRectGetWidth(self.view.bounds)-100.f, CGRectGetWidth(self.view.bounds)-100.f);
+    self.animatedView.frame = CGRectMake(50.f, 50.f, CGRectGetWidth(self.view.bounds)-100.f, CGRectGetWidth(self.view.bounds)-100.f);
     self.animatedView.center=self.view.center;
 }
 
 
--(void)_setupAnimatedView
-{
-    self.animatedView=[[UIView alloc] initWithFrame:CGRectZero];
+-(void)_setupAnimatedView {
+  self.animatedView = [[RPLThrowAwayAnimationView alloc] init];
+  self.animatedView.delegate = self;
     self.animatedView.backgroundColor=[UIColor lightGrayColor];
-    __weak typeof (self) weakSelf=self;
-    [self.animatedView addThrowAwayAnimationWithCompletionHandler:^
-    {
-        weakSelf.animatedView.transform=CGAffineTransformIdentity;
-        weakSelf.animatedView.center=weakSelf.view.center;
-    }];
-    
+//    [self.animatedView addThrowAwayAnimationWithCompletionHandler:^
+//    {
+//    }];
+  
     [self.view addSubview:self.animatedView];
 }
+
+#pragma mark - delegate
+
+- (void)viewDidEndMovingAnimationToDirection:
+(RPLThrowAwayAnimationDirection)direction {
+  self.animatedView.transform=CGAffineTransformIdentity;
+  self.animatedView.center=self.view.center;
+}
+
+
 
 
 @end
