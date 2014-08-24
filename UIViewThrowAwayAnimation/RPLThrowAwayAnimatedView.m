@@ -1,34 +1,39 @@
 //
-//  RPLThrowAwayAnimationView.m
+//  RPLThrowAwayAnimatedView.m
 //  ThrowAwayAnimationExample
 //
 //  Created by user on 26.04.14.
 //  Copyright (c) 2014 RedPandazLabs. All rights reserved.
 //
 
-#import "RPLThrowAwayAnimationView.h"
-#import "RPLThrowAwayAnimationView_Private.h"
+#import "RPLThrowAwayAnimatedView.h"
+#import "RPLThrowAwayAnimatedView_Private.h"
 
-@interface RPLThrowAwayAnimationView()
+@interface RPLThrowAwayAnimatedView ()
 
 @property(nonatomic, assign) CGPoint actionInitialPoint;
 @property(nonatomic, strong, readwrite) UIView* contentView;
 
 @end
 
-@implementation RPLThrowAwayAnimationView
+@implementation RPLThrowAwayAnimatedView
 
 - (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-      _actionThresholdAngle = kRPLThrowAwayAnimationViewThresholdAngle;
-      UIPanGestureRecognizer* panGestureRecognizer =
-          [[UIPanGestureRecognizer alloc] initWithTarget:self
-              action:@selector(handleThrowAwayPanRecognizer:)];
-      [panGestureRecognizer setMaximumNumberOfTouches:2];
-      [self addGestureRecognizer:panGestureRecognizer];
-    }
-    return self;
+  NSAssert(NO, @"use initWithReuseIdentifier: instead");
+  return nil;
+}
+
+- (instancetype)initWithReuseIdentifier:(NSString*)reuseIdentifier {
+  NSParameterAssert(reuseIdentifier);
+  self = [super initWithFrame:CGRectZero];
+  if (self) {
+    _reuseIdentifier = reuseIdentifier;
+    _actionThresholdAngle = kRPLThrowAwayAnimationViewThresholdAngle;
+    UIPanGestureRecognizer* panGestureRecognizer =
+        [self createPanGestureRecognizer];
+    [self addGestureRecognizer:panGestureRecognizer];
+  }
+  return self;
 }
 
 - (UIView*)contentView {
@@ -42,17 +47,34 @@
   return _contentView;
 }
 
+- (UIPanGestureRecognizer*)createPanGestureRecognizer {
+  UIPanGestureRecognizer* panGestureRecognizer =
+      [[UIPanGestureRecognizer alloc] initWithTarget:self
+          action:@selector(handleThrowAwayPanRecognizer:)];
+  [panGestureRecognizer setMaximumNumberOfTouches:2];
+  return panGestureRecognizer;
+}
+
+- (void)prepareForReuse {
+  self.transform = CGAffineTransformIdentity;
+}
+
 - (void)performThrowAwayAnimationWithDirection:
     (RPLThrowAwayAnimationDirection)animationDirection {
   [self delegateViewWillStartMovingAction];
-//  [self delegateViewWillStartMovingAnimationToDirection:animationDirection];
   self.actionInitialPoint = self.center;
   
-#warning !!!IMPLEMENT IN FUTURE TO REAL VIEW BOUNDS SIZEs
+  CGFloat movingWidth = ceilf(CGRectGetWidth(self.bounds) * 1.5/2);
+  CGPoint leftDestPoint =
+      CGPointMake(-movingWidth,
+                  ceilf(CGRectGetMidY(self.superview.bounds)*1.2f));
+  CGPoint rightDestPoint =
+      CGPointMake(CGRectGetWidth(self.superview.bounds) + movingWidth,
+                  ceilf(CGRectGetMidY(self.superview.bounds)*1.2f));
   CGPoint destPoint =
       (animationDirection == RPLThrowAwayAnimationDirectionRight)
-          ? CGPointMake(640.f, CGRectGetWidth(self.superview.bounds)/2)
-          : CGPointMake(-320.f, CGRectGetWidth(self.superview.bounds)/2);
+          ? rightDestPoint
+          : leftDestPoint;
   [self performAnimationToPoint:destPoint velocity:CGPointMake(500.f, 500.f)];
 }
 
@@ -61,8 +83,9 @@
 - (void)handleThrowAwayPanRecognizer:
     (UIPanGestureRecognizer*)gestureRecognizer {
   CGFloat offset =
-      self.superview.center.x-(  gestureRecognizer.view.center.x +
-          [gestureRecognizer translationInView:self.superview].x);
+      CGRectGetMidX(self.superview.bounds) -
+          (gestureRecognizer.view.center.x +
+              [gestureRecognizer translationInView:self.superview].x);
   CGFloat angle = (offset/(CGRectGetWidth(self.superview.bounds)/2)) * M_PI/20;
   
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
@@ -94,7 +117,7 @@
                                                   1000);
       
       CGPoint velocity = [gestureRecognizer velocityInView:self.superview];
-      if (fabsf(RADIANS_TO_DEGREES(angle))<self.actionThresholdAngle) {
+      if (fabsf(RADIANS_TO_DEGREES(angle)) < self.actionThresholdAngle) {
         [self performAnimationToInitialPointWithVelocity:velocity];
       } else {
         [self performAnimationToPoint:resultPoint velocity:velocity];
@@ -159,8 +182,14 @@
   NSTimeInterval duration = MIN(fabs((xPoints / velocityX)),
                                 fabs((yPoints / velocityY)));
   
-  duration=duration<0.5 ? 0.5f : duration;
-  duration=duration>2.f ? 2.f : duration;
+  static CGFloat const kRPLThrowAwayAnimationViewMinDuration = .3f;
+  duration = duration < kRPLThrowAwayAnimationViewMinDuration
+      ? kRPLThrowAwayAnimationViewMinDuration
+      : duration;
+  static CGFloat const kRPLThrowAwayAnimationViewMaxDuration = 1.5f;
+  duration = duration > kRPLThrowAwayAnimationViewMaxDuration
+      ? kRPLThrowAwayAnimationViewMaxDuration
+      : duration;
   
   return duration;
 }

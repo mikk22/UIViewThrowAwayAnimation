@@ -1,23 +1,24 @@
 //
-//  RPLThrowAwayAnimationViewTests.m
+//  RPLThrowAwayAnimatedViewTests.m
 //  ThrowAwayAnimationExample
 //
 //  Created by user on 27.04.14.
 //  Copyright (c) 2014 RedPandazLabs. All rights reserved.
 //
 
+#import "RPLThrowAwayAnimatedView.h"
+#import "RPLThrowAwayAnimatedView_Private.h"
+
 #import "Kiwi.h"
 
-#import "RPLThrowAwayAnimationView.h"
-#import "RPLThrowAwayAnimationView_Private.h"
+SPEC_BEGIN(RPLThrowAwayAnimatedViewSpec)
 
-SPEC_BEGIN(RPLThrowAwayAnimationViewSpec)
-
-describe(@"RPLThrowAwayAnimationView", ^{
-  __block RPLThrowAwayAnimationView* view = nil;
+describe(@"RPLThrowAwayAnimatedView", ^{
+  __block RPLThrowAwayAnimatedView* view = nil;
   beforeEach(^{
-    view = [[RPLThrowAwayAnimationView alloc] initWithFrame:
-        CGRectMake(50, 50, 50, 50)];
+    view = [[RPLThrowAwayAnimatedView alloc]
+        initWithReuseIdentifier:@"identifier"];
+    view.frame = CGRectMake(50, 50, 50, 50);
   });
   
   context(@"when created", ^{
@@ -40,7 +41,7 @@ describe(@"RPLThrowAwayAnimationView", ^{
 //    });
   });
   
-  context(@"when responding to delegate", ^{
+  context(@"and responding to delegate", ^{
     __block NSObject<RPLThrowAwayAnimationViewDelegate>* delegate = nil;
     beforeEach(^{
       delegate =
@@ -49,31 +50,31 @@ describe(@"RPLThrowAwayAnimationView", ^{
     });
     
     specify(^{
-      [[delegate should] receive:@selector(viewDidReturnToInitialPoint)];
+      [[delegate should] receive:@selector(viewDidReturnToInitialPoint:)];
       [view delegateViewDidReturnToInitialPoint];
     });
 
     specify(^{
-      [[delegate should] receive:@selector(viewWillStartMovingAction)];
+      [[delegate should] receive:@selector(viewWillStartMovingAction:)];
       [view delegateViewWillStartMovingAction];
     });
     
     specify(^{
       [[delegate should]
-          receive:@selector(viewWillStartMovingAnimationToDirection:)];
-      [view delegateViewWillStartMovingAnimationToDirectionn:
+          receive:@selector(view:willStartMovingAnimationToDirection:)];
+      [view delegateViewWillStartMovingAnimationToDirection:
           RPLThrowAwayAnimationDirectionLeft];
     });
     
     specify(^{
       [[delegate should]
-          receive:@selector(viewDidEndMovingAnimationToDirection:)];
+       receive:@selector(view:didEndMovingAnimationToDirection:)];
       [view delegateViewDidEndMovingAnimationToDirection:
           RPLThrowAwayAnimationDirectionLeft];
     });
     
     specify(^{
-      [[delegate should] receive:@selector(viewDidChangeAngle:)];
+      [[delegate should] receive:@selector(view:didChangeAngle:)];
       [view delegateViewDidChangeAngle:0.f];
     });
   });

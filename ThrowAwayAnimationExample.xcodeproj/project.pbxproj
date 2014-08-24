@@ -18,12 +18,14 @@
 		CE9B15261754CF2E006BF165 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15251754CF2E006BF165 /* Default@2x.png */; };
 		CE9B15281754CF2E006BF165 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B15271754CF2E006BF165 /* Default-568h@2x.png */; };
 		CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B152A1754CF2E006BF165 /* RPLViewController.m */; };
-		CED138AC190C399B00B5FFCA /* RPLThrowAwayAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimationView.m */; };
+		CED138AC190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m */; };
 		CED138DD190C75D500B5FFCA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED138DC190C75D500B5FFCA /* XCTest.framework */; };
 		CED138DE190C75D500B5FFCA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15131754CF2E006BF165 /* Foundation.framework */; };
 		CED138DF190C75D500B5FFCA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15111754CF2E006BF165 /* UIKit.framework */; };
 		CED138E5190C75D500B5FFCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CED138E3190C75D500B5FFCA /* InfoPlist.strings */; };
-		CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimationViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimationViewTests.m */; };
+		CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */; };
+		CEE2B67B19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */; };
+		CEE2B68419A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,17 +90,21 @@
 		CE9B15271754CF2E006BF165 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CE9B15291754CF2E006BF165 /* RPLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLViewController.h; sourceTree = "<group>"; };
 		CE9B152A1754CF2E006BF165 /* RPLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPLViewController.m; sourceTree = "<group>"; };
-		CED138AA190C399B00B5FFCA /* RPLThrowAwayAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayAnimationView.h; sourceTree = "<group>"; };
-		CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimationView.m; sourceTree = "<group>"; };
+		CED138AA190C399B00B5FFCA /* RPLThrowAwayAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayAnimatedView.h; sourceTree = "<group>"; };
+		CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimatedView.m; sourceTree = "<group>"; };
 		CED138DB190C75D500B5FFCA /* ThrowAwayAnimationExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThrowAwayAnimationExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED138DC190C75D500B5FFCA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CED138E2190C75D500B5FFCA /* ThrowAwayAnimationExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThrowAwayAnimationExampleTests-Info.plist"; sourceTree = "<group>"; };
 		CED138E4190C75D500B5FFCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CED138E8190C75D500B5FFCA /* ThrowAwayAnimationExampleTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ThrowAwayAnimationExampleTests-Prefix.pch"; sourceTree = "<group>"; };
-		CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimationViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimationViewTests.m; sourceTree = "<group>"; };
+		CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimatedViewTests.m; sourceTree = "<group>"; };
 		CED139AD190C77B000B5FFCA /* Kiwi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kiwi.xcodeproj; path = Submodules/Kiwi/Kiwi.xcodeproj; sourceTree = "<group>"; };
 		CED13AB7190CF98500B5FFCA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimationView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayAnimationView_Private.h; sourceTree = "<group>"; };
+		CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimatedView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayAnimatedView_Private.h; sourceTree = "<group>"; };
+		CEE2B67919A5C6FA001D54F5 /* RPLThrowAwayContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayContainerView.h; sourceTree = "<group>"; };
+		CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayContainerView.m; sourceTree = "<group>"; };
+		CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayContainerViewTests.m; sourceTree = "<group>"; };
+		CEE2B68519A6CE55001D54F5 /* RPLThrowAwayContainerView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayContainerView_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,10 +207,14 @@
 		CE9B15381754D201006BF165 /* UIViewThrowAwayAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				CED138AA190C399B00B5FFCA /* RPLThrowAwayAnimationView.h */,
-				CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimationView.m */,
-				CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimationView_Private.h */,
-				CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimationViewTests.m */,
+				CED138AA190C399B00B5FFCA /* RPLThrowAwayAnimatedView.h */,
+				CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m */,
+				CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimatedView_Private.h */,
+				CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */,
+				CEE2B67919A5C6FA001D54F5 /* RPLThrowAwayContainerView.h */,
+				CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */,
+				CEE2B68519A6CE55001D54F5 /* RPLThrowAwayContainerView_Private.h */,
+				CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */,
 			);
 			path = UIViewThrowAwayAnimation;
 			sourceTree = SOURCE_ROOT;
@@ -372,8 +382,9 @@
 			files = (
 				CE9B151E1754CF2E006BF165 /* main.m in Sources */,
 				CE9B15221754CF2E006BF165 /* RPLAppDelegate.m in Sources */,
+				CEE2B67B19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m in Sources */,
 				CE9B152B1754CF2E006BF165 /* RPLViewController.m in Sources */,
-				CED138AC190C399B00B5FFCA /* RPLThrowAwayAnimationView.m in Sources */,
+				CED138AC190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +392,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimationViewTests.m in Sources */,
+				CEE2B68419A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m in Sources */,
+				CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +491,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
 				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -490,7 +504,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
 				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

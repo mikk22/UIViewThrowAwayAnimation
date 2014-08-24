@@ -1,16 +1,18 @@
 //
-//  RPLThrowAwayAnimationView_Private.h
+//  RPLThrowAwayAnimatedView_Private.h
 //  ThrowAwayAnimationExample
 //
 //  Created by user on 27.04.14.
 //  Copyright (c) 2014 RedPandazLabs. All rights reserved.
 //
 
-#import "RPLThrowAwayAnimationView.h"
+#import "RPLThrowAwayAnimatedView.h"
 
 static CGFloat const kRPLThrowAwayAnimationViewThresholdAngle = 5.f;
 
-@interface RPLThrowAwayAnimationView()
+@interface RPLThrowAwayAnimatedView ()
+
+@property(nonatomic, copy, readwrite) NSString* reuseIdentifier;
 
 - (void)delegateViewWillStartMovingAction;
 - (void)delegateViewDidChangeAngle:(CGFloat)angle;

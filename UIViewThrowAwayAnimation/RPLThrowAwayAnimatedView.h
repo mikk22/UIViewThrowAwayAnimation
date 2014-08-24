@@ -1,5 +1,5 @@
 //
-//  RPLThrowAwayAnimationView.h
+//  RPLThrowAwayAnimatedView.h
 //  ThrowAwayAnimationExample
 //
 //  Created by user on 26.04.14.
@@ -11,34 +11,38 @@
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
 
 typedef NS_ENUM(NSUInteger, RPLThrowAwayAnimationDirection) {
-  RPLThrowAwayAnimationDirectionRight=0,
+  RPLThrowAwayAnimationDirectionRight = 0,
   RPLThrowAwayAnimationDirectionLeft
 };
 
 @protocol RPLThrowAwayAnimationViewDelegate;
 
-@interface RPLThrowAwayAnimationView : UIView
+@interface RPLThrowAwayAnimatedView : UIView
 
 @property(nonatomic, weak) id<RPLThrowAwayAnimationViewDelegate> delegate;
 @property(nonatomic, assign) CGFloat actionThresholdAngle;
 @property(nonatomic, strong, readonly) UIView* contentView;
+@property(nonatomic, copy, readonly) NSString* reuseIdentifier;
 
+- (instancetype)initWithReuseIdentifier:(NSString*)reuseIdentifier;
 - (void)performThrowAwayAnimationWithDirection:
     (RPLThrowAwayAnimationDirection)animationDirection;
+
+- (void)prepareForReuse;
 
 @end
 
 @protocol RPLThrowAwayAnimationViewDelegate <NSObject>
 
 @optional
-- (void)viewWillReturnToInitialPoint:(RPLThrowAwayAnimationView*)view;
-- (void)viewDidReturnToInitialPoint:(RPLThrowAwayAnimationView*)view;
-- (void)viewWillStartMovingAction:(RPLThrowAwayAnimationView*)view;
-- (void)view:(RPLThrowAwayAnimationView*)view
+- (void)viewWillReturnToInitialPoint:(RPLThrowAwayAnimatedView*)view;
+- (void)viewDidReturnToInitialPoint:(RPLThrowAwayAnimatedView*)view;
+- (void)viewWillStartMovingAction:(RPLThrowAwayAnimatedView*)view;
+- (void)view:(RPLThrowAwayAnimatedView*)view
     willStartMovingAnimationToDirection:
         (RPLThrowAwayAnimationDirection)direction;
-- (void)view:(RPLThrowAwayAnimationView*)view didEndMovingAnimationToDirection:
+- (void)view:(RPLThrowAwayAnimatedView*)view didEndMovingAnimationToDirection:
     (RPLThrowAwayAnimationDirection)direction;
-- (void)view:(RPLThrowAwayAnimationView*)view didChangeAngle:(CGFloat)angle;
+- (void)view:(RPLThrowAwayAnimatedView*)view didChangeAngle:(CGFloat)angle;
 
 @end
