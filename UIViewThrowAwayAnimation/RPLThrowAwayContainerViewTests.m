@@ -14,11 +14,12 @@
 SPEC_BEGIN(RPLThrowAwayContainerViewSpec)
 describe(@"RPLThrowAwayContainerView", ^{
   __block RPLThrowAwayContainerView* containerView = nil;
-  __block id<RPLThrowAwayViewDatasource> dataSource = nil;
+  __block id<RPLThrowAwayContainerViewDatasource> dataSource = nil;
   
   beforeEach(^{
     dataSource =
-        [KWMock nullMockForProtocol:@protocol(RPLThrowAwayViewDatasource)];
+        [KWMock nullMockForProtocol:
+            @protocol(RPLThrowAwayContainerViewDatasource)];
     containerView = [[RPLThrowAwayContainerView alloc] initWithFrame:
         CGRectMake(0.f, 0.f, 100.f, 100.f)];
     containerView.dataSource = dataSource;
@@ -179,10 +180,11 @@ describe(@"RPLThrowAwayContainerView", ^{
     });
     
     context(@"and responds to delegate", ^{
-      __block id<RPLThrowAwayViewDelegate> delegate = nil;
+      __block id<RPLThrowAwayContainerViewDelegate> delegate = nil;
 
       beforeEach(^{
-        delegate = [KWMock nullMockForProtocol:@protocol(RPLThrowAwayViewDelegate)];
+        delegate = [KWMock nullMockForProtocol:
+            @protocol(RPLThrowAwayContainerViewDelegate)];
         containerView.delegate = delegate;
       });
       

@@ -86,6 +86,10 @@
   return _views;
 }
 
+- (NSArray*)containedViews {
+  return [self.views copy];
+}
+
 #pragma mark - Private
 
 - (UIView*)createBackgroundView {
@@ -149,9 +153,10 @@
 - (void)view:(RPLThrowAwayAnimatedView*)view
     didEndMovingAnimationToDirection:
         (RPLThrowAwayAnimationDirection)direction {
+  [self.views removeObject:view];
   [view removeFromSuperview];
-  [self queueView:view];
   [view prepareForReuse];
+  [self queueView:view];
   
   [self delegateAnimatedView:view
       didEndMovingAnimationToDirection:direction];

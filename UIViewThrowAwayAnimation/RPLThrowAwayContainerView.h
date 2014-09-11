@@ -10,14 +10,15 @@
 
 #import "RPLThrowAwayAnimatedView.h"
 
-@protocol RPLThrowAwayViewDatasource;
-@protocol RPLThrowAwayViewDelegate;
+@protocol RPLThrowAwayContainerViewDatasource;
+@protocol RPLThrowAwayContainerViewDelegate;
 
 @interface RPLThrowAwayContainerView : UIView
 
-@property(nonatomic, weak) id<RPLThrowAwayViewDatasource> dataSource;
-@property(nonatomic, weak) id<RPLThrowAwayViewDelegate> delegate;
+@property(nonatomic, weak) id<RPLThrowAwayContainerViewDatasource> dataSource;
+@property(nonatomic, weak) id<RPLThrowAwayContainerViewDelegate> delegate;
 
+@property(nonatomic, copy, readonly) NSArray* containedViews;
 @property(nonatomic, strong, readonly) UIView* backgroundView;
 
 - (void)reloadData;
@@ -28,7 +29,7 @@
     (RPLThrowAwayAnimationDirection)animationDirection;
 @end
 
-@protocol RPLThrowAwayViewDatasource<NSObject>
+@protocol RPLThrowAwayContainerViewDatasource<NSObject>
 
 - (RPLThrowAwayAnimatedView*)viewForThrowAwayView:
     (RPLThrowAwayContainerView*)throwAwayView;
@@ -37,7 +38,7 @@
 
 @end
 
-@protocol RPLThrowAwayViewDelegate<NSObject>
+@protocol RPLThrowAwayContainerViewDelegate<NSObject>
 
 @optional
 - (void)throwAwayContainerView:(RPLThrowAwayContainerView*)containerView

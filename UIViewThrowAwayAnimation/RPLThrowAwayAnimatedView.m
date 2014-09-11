@@ -39,7 +39,7 @@
 - (UIView*)contentView {
   if (!_contentView) {
     _contentView = [[UIView alloc] initWithFrame:self.bounds];
-    _contentView.backgroundColor = [UIColor greenColor];
+    _contentView.backgroundColor = [UIColor clearColor];
     _contentView.autoresizingMask =
         UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self addSubview:_contentView];
