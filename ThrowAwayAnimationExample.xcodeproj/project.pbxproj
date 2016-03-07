@@ -23,9 +23,7 @@
 		CED138DE190C75D500B5FFCA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15131754CF2E006BF165 /* Foundation.framework */; };
 		CED138DF190C75D500B5FFCA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B15111754CF2E006BF165 /* UIKit.framework */; };
 		CED138E5190C75D500B5FFCA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CED138E3190C75D500B5FFCA /* InfoPlist.strings */; };
-		CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */; };
 		CEE2B67B19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */; };
-		CEE2B68419A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +73,8 @@
 
 /* Begin PBXFileReference section */
 		CE2AE652190D994E00647A4E /* libKiwi-XCTest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libKiwi-XCTest.a"; path = "Submodules/Kiwi/build/Debug-iphoneos/libKiwi-XCTest.a"; sourceTree = "<group>"; };
+		CE2C9F721C8BCABC008E9C16 /* RPLThrowAwayAnimatedViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimatedViewTests.m; sourceTree = "<group>"; };
+		CE2C9F731C8BCABC008E9C16 /* RPLThrowAwayContainerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayContainerViewTests.m; sourceTree = "<group>"; };
 		CE9B150E1754CF2E006BF165 /* ThrowAwayAnimationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThrowAwayAnimationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9B15111754CF2E006BF165 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE9B15131754CF2E006BF165 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,13 +97,11 @@
 		CED138E2190C75D500B5FFCA /* ThrowAwayAnimationExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ThrowAwayAnimationExampleTests-Info.plist"; sourceTree = "<group>"; };
 		CED138E4190C75D500B5FFCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CED138E8190C75D500B5FFCA /* ThrowAwayAnimationExampleTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ThrowAwayAnimationExampleTests-Prefix.pch"; sourceTree = "<group>"; };
-		CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayAnimatedViewTests.m; sourceTree = "<group>"; };
 		CED139AD190C77B000B5FFCA /* Kiwi.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kiwi.xcodeproj; path = Submodules/Kiwi/Kiwi.xcodeproj; sourceTree = "<group>"; };
 		CED13AB7190CF98500B5FFCA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimatedView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayAnimatedView_Private.h; sourceTree = "<group>"; };
 		CEE2B67919A5C6FA001D54F5 /* RPLThrowAwayContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayContainerView.h; sourceTree = "<group>"; };
 		CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayContainerView.m; sourceTree = "<group>"; };
-		CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPLThrowAwayContainerViewTests.m; sourceTree = "<group>"; };
 		CEE2B68519A6CE55001D54F5 /* RPLThrowAwayContainerView_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPLThrowAwayContainerView_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +140,15 @@
 				CE119BFF190FA97C00F3C8A9 /* KiwiXCTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CE2C9F711C8BCABC008E9C16 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C9F721C8BCABC008E9C16 /* RPLThrowAwayAnimatedViewTests.m */,
+				CE2C9F731C8BCABC008E9C16 /* RPLThrowAwayContainerViewTests.m */,
+			);
+			path = tests;
 			sourceTree = "<group>";
 		};
 		CE9B15051754CF2E006BF165 = {
@@ -207,14 +214,13 @@
 		CE9B15381754D201006BF165 /* UIViewThrowAwayAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				CE2C9F711C8BCABC008E9C16 /* tests */,
 				CED138AA190C399B00B5FFCA /* RPLThrowAwayAnimatedView.h */,
 				CED138AB190C399B00B5FFCA /* RPLThrowAwayAnimatedView.m */,
 				CED13AB9190D7B7100B5FFCA /* RPLThrowAwayAnimatedView_Private.h */,
-				CED138EF190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m */,
 				CEE2B67919A5C6FA001D54F5 /* RPLThrowAwayContainerView.h */,
 				CEE2B67A19A5C6FA001D54F5 /* RPLThrowAwayContainerView.m */,
 				CEE2B68519A6CE55001D54F5 /* RPLThrowAwayContainerView_Private.h */,
-				CEE2B68319A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m */,
 			);
 			path = UIViewThrowAwayAnimation;
 			sourceTree = SOURCE_ROOT;
@@ -283,7 +289,7 @@
 			attributes = {
 				CLASSPREFIX = RPL;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = RedPandazLabs;
 				TargetAttributes = {
 					CED138DA190C75D500B5FFCA = {
@@ -392,8 +398,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE2B68419A6C5AF001D54F5 /* RPLThrowAwayContainerViewTests.m in Sources */,
-				CED138F0190C776E00B5FFCA /* RPLThrowAwayAnimatedViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +445,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -492,6 +497,7 @@
 				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
 				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.RedPandazLabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -505,6 +511,7 @@
 				GCC_PREFIX_HEADER = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Prefix.pch";
 				INFOPLIST_FILE = "ThrowAwayAnimationExample/ThrowAwayAnimationExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.RedPandazLabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -541,6 +548,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Submodules/Kiwi/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RPL.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Submodules/Kiwi\"/**";
@@ -575,6 +583,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Submodules/Kiwi/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RPL.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Submodules/Kiwi\"/**";

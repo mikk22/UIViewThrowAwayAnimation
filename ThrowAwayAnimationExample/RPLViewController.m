@@ -12,8 +12,8 @@
 #import "RPLThrowAwayContainerView.h"
 
 @interface RPLViewController ()<
-    RPLThrowAwayViewDatasource,
-    RPLThrowAwayViewDelegate>
+    RPLThrowAwayContainerViewDatasource,
+    RPLThrowAwayContainerViewDelegate>
 
 @property(nonatomic, strong) RPLThrowAwayContainerView* throwAwayView;
 @property(nonatomic, strong) UIButton* yesButton;
@@ -35,7 +35,7 @@
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
-  self.throwAwayView.frame = CGRectInset(self.view.bounds, 200, 200);
+  self.throwAwayView.frame = CGRectInset(self.view.bounds, 20, 20);
   self.yesButton.frame = CGRectMake(20.f, CGRectGetHeight(self.throwAwayView.backgroundView.bounds)-60.f, 100.f, 40.f);
   self.noButton.frame = CGRectMake(CGRectGetWidth(self.throwAwayView.backgroundView.bounds)-120.f, CGRectGetHeight(self.throwAwayView.backgroundView.bounds)-60.f, 100.f, 40.f);
 }
@@ -141,6 +141,9 @@
     (RPLThrowAwayContainerView*)throwAwayView {
   RPLThrowAwayAnimatedView* view = [self viewForIndex:self.viewsCounter];
   ++self.viewsCounter;
+  if (self.viewsCounter > 12) {
+    self.viewsCounter = 0;
+  }
   return view;
 }
 

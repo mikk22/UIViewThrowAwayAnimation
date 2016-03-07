@@ -103,6 +103,10 @@
 
 - (void)queueView:(RPLThrowAwayAnimatedView*)view {
   NSParameterAssert(view.reuseIdentifier);
+  if (!view.reuseIdentifier) {
+    return;
+  }
+
   [self.queueViews setObject:view
                       forKey:view.reuseIdentifier];
 }
@@ -119,7 +123,8 @@
 - (void)addNextView {
   RPLThrowAwayAnimatedView* view = [self.dataSource viewForThrowAwayView:self];
   if (view) {
-    NSParameterAssert([view isKindOfClass:[RPLThrowAwayAnimatedView class] ]);
+    NSParameterAssert([view isKindOfClass:[RPLThrowAwayAnimatedView class]]);
+    NSParameterAssert(!view.delegate || view.delegate == self);
     view.delegate = self;
     view.frame = [self.dataSource throwAwayView:self frameForView:view];
     [self insertSubview:view aboveSubview:self.backgroundView];
